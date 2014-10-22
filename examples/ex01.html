@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example 01</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+        <style type="text/css">
+        div {
+        	border: 1px red solid;
+        	min-width: 50px;
+        	min-height: 10px;
+        }
+        </style>
+</head>
+<body>
+	<div id="message-box">Fix code to make me happy...</div>
+	<script>
+	$(function() {
+	var sayHello = function(selector) {
+		$(selector).html('Hello world!');
+		$(selector).css('border-color','#0F0');
+
+	}
+
+	// your selectors here
+	sayHello('#message-box');
+});
+	</script>
+</body>
+</html>

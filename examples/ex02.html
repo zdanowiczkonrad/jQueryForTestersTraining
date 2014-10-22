@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example 02</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+        <style type="text/css">
+        div {
+        	
+        	min-width: 50px;
+        	min-height: 10px;
+        	margin-bottom: 5px;
+        	border-radius: 4px;
+        }
+        </style>
+</head>
+<body>
+<h2>select me by:</h2>
+	<div>first child</div>
+	<div class="someclazz">class name</div>
+	<div class="one another">class names</div>
+	<div id="message-box">id</div>
+	<div><p>child</p></div>
+	<div><span>direct child</span> <strong><span>can't touch this!</span></strong></div>
+	<div my-attribute>by attribute</div>
+	<div random-attribute="my-value">by attribute value</div>
+	<div random-attribute="training_WITHSOMERANDOMTEXTTHATYOUDONTWISHTOTYPEBYYOURSELF">beginning with</div>
+	<div random-attribute="WHOAANOTHERRANDOMTEXT_training">ends with</div>
+	<div random-attribute="WHOAANOTHERRANDOMTEXT_training_WITHSOMERANDOMTEXTTHATYOUDONTWISHTOTYPEBYYOURSELF">contains</div>
+	<div random-attribute="WHOAANOTHERRANDOMTEXT_training_WITHSOMERANDOMTEXTTHATYOUDONTWISHTOTYPEBYYOURSELF">contains</div>
+	<script>
+	$(function() {
+	var sayHello = function(selector) {
+		var text = $(selector).html();
+		$(selector).html(text+'&nbsp; ✓');
+		$(selector).css('border','2px #0F0 solid');
+	}
+
+	// your selectors here
+	sayHello('div:first');
+	sayHello('.someclazz');
+	sayHello('.one.another');
+	sayHello("#message-box");
+	sayHello('div p');
+	sayHello('div>span');
+	sayHello('[my-attribute]');
+	sayHello('[random-attribute=my-value]');
+	sayHello('[random-attribute^=training]');
+	sayHello('[random-attribute$=training]');
+	sayHello('[random-attribute*=training]');
+});
+	</script>
+</body>
+</html>

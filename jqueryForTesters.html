@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>jQuery for testers - training</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>jQuery for testers</h1>
+					
+				</section>
+
+				<section>
+					<section>
+					<h1>Agenda</h1>
+					</section>
+					<section>
+					<h2>intro</h2>
+						<p><small>5 min</small></p>
+					</section>
+					<section>
+					<h2>selektory</h2>
+						<p><small>15 min</small></p>
+					</section>
+					<section>
+					<h2>zdarzenia</h2>
+						<p><small>20 min</small></p>
+					</section>
+					<section>
+					<h2>ajax, animacje, pluginy</h2>
+						<p><small>5 min</small></p>
+					</section>
+					<section>
+					<h2>JS &gt; Robot (workshop)</h2>
+						<p><small>20 min +</small></p>
+					</section>
+
+				</section>
+
+
+				<section>
+				<section>
+				<p>
+				<strong>jQuery</strong> <span class="fragment" style="font-size: 0.7em">– lekka biblioteka programistyczna dla języka JavaScript, ułatwiająca korzystanie z JavaScriptu (w tym manipulację drzewem DOM). Kosztem niewielkiego spadku wydajności w stosunku do profesjonalnie napisanego kodu w niewspomaganym JavaScripcie pozwala osiągnąć interesujące efekty animacji, dodać dynamiczne zmiany strony, wykonać zapytania AJAX</span></p>
+				</section>
+				<section>
+				<h2>suche fakty</h2>
+					<ol>
+							<li class="fragment">wydana w sierpniu 2006</li>
+							<li class="fragment">używana przez <strong>55%</strong> z 10,000 największych stron</li>
+							<li class="fragment">najpopularniejsza biblioteka do JS na świecie</li>
+							<li class="fragment">używa jej ~20 mln. stron</li>
+							<li class="fragment"><em>najlepsza i najgorsza rzecz jak przytrafiła się JS</em></li>
+						</ol>
+						</section>
+
+						<section>
+						<h2>krótko o jQuery</h2>
+				<ul>
+				<li class="fragment">intuicyjne i łatwe API</li>
+				<li class="fragment">zaawansowana manipulacja DOM-em</li>
+				<li class="fragment">obsługa zdarzeń (<code>event</code>)</li>
+				<li class="fragment">obsługa animacji</li>
+				<li class="fragment">łatwy AJAX</li>
+				<li class="fragment">wsparcie dla wszystkich przeglądarek</li>
+				<li class="fragment">jQuery UI, jQuery Mobile</li>
+				<li class="fragment">duże community</li>
+				<li class="fragment">zajmuje 32 kB</li>
+							</ul>
+						</section>
+
+						<section>
+						<h3>przykład</h3>
+						<p class="fragment">Umieść w elemencie o id <code>message-box</code> tekst <em>Hello World!</em></p>
+						<pre class="fragment"><code data-trim contenteditable>
+			$('#message-box').html('Hello world!');
+					</code></pre>
+
+					<div class="fragment">
+					<h4>pełny kod</h4>
+	<pre><code data-trim contenteditable>
+		&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;Example 00&lt;/title&gt;
+	&lt;script src=&quot;http://code.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div id=&quot;message-box&quot;&gt;&lt;/div&gt;
+	&lt;script&gt;
+	$('#message-box').html('Hello world!');
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+					</div>
+						</section>
+						<section>
+			<h2>porównanie</h2>
+			<style type="text/css">
+			table.comparision {
+				display: block; border-collapse: collapse; font-size: 0.8em;
+				margin: 30px auto;
+			}
+			table.comparision td {
+				text-align: center;
+			}
+			table.comparision tr {
+				border-bottom: 1px #444 dotted;
+			}
+			</style>
+			<div class="fragment">
+			<p><code>jQuery ⊂ JavaScript</code>
+			</p>
+			</div>
+		<table class="fragment comparision">
+		<tr style="border-bottom: 1px #aaa dotted;">
+		<td style="width: 600px"></td><td style="min-width: 400px;"><strong>JS</strong></td><td style="min-width: 400px;"><strong>jQuery</strong></td>
+		</tr>
+		<tr class="fragment"><td>krzywa nauki</td><td>+</td><td>++</td></tr>
+		<tr class="fragment"><td>spójność składni</td><td>--</td><td>+</td></tr>
+		<tr class="fragment"><td>szybkość pisania</td><td>-</td><td>+</td></tr>
+		<tr class="fragment"><td>performance</td><td>++</td><td>-</td></tr>
+		<tr class="fragment"><td>wsparcie</td><td>-</td><td>+</td></tr>
+		<tr class="fragment"><td>p(<code>spaghetti</code>)<sup><small>1</small></sup></td><td>0.5</td><td>0.83</td></tr>
+		</table>
+		<small class="fragment"> <sup>1</sup> - tajne badania podparte subiektywną opinią i estymatą z palca</small>
+						</section>
+
+				</section>
+
+
+				<section>
+					<section>
+					<h1>selektory</h1>
+</section>
+					<section>
+					<h3>kompatybilność</h3>
+					<p class="fragment">wsparcie selektorów przez przeglądarki (Vanilla)
+					<ul>
+					<li class="fragment">CSS2 (<code>*</code>, <code>#</code>, <code>.</code>, <code>:focus</code>) &nbsp;<span class="fragment" style="color: green;">✓</span></li>
+					<li class="fragment">CSS3 (<code>attr</code>, <code>~</code>, <code>+</code>, <code>:first</code>)&nbsp;<span class="fragment" style="color: red;">✘ (ie)</span></li>
+					</ul>
+					<p class="fragment" style="margin-top: 20px">wsparcie selektorów przez jQuery</p>
+
+					<ul class="fragment">
+					<li>CSS2 &nbsp;<span class="fragment" style="color: green;">✓</span></li>
+					<li>CSS3 &nbsp;<span class="fragment" style="color: green;">✓</span></li>
+					</ul>
+					</section>
+
+					<section>
+					<table>
+					<tr>
+					<td>
+					<code>*</code> </td><td class="fragment">wszystkie elementy</td>
+					</tr>
+					<tr>
+					<tr>
+					<td>
+					<code>table</code> </td><td class="fragment">tabelki<br/></td>
+					</tr>
+					<tr>
+					<td><code>table p</code> </td><td class="fragment">akapity w tabeli
+					</td>
+					</tr>
+					<tr>
+					<td><code>div > p</code> </td><td class="fragment">akapity bezpośrednio w div
+					</td>
+					</tr>
+					<tr>
+					<td><code>.klasa</code> </td><td class="fragment">elementy o klasie <code>klasa</code>
+					</td>
+					</tr>
+<tr>
+					<td><code>.klasa.klasa2</code> </td><td class="fragment">elementy o klasie <code>klasa</code> i <code>klasa2</code>
+					</td>
+					</tr>
+					<tr>
+					<td><code>p:first</code> </td><td class="fragment">pierwszy element o znaczniku p
+					</td>
+					</tr>
+					<tr>
+					<td><code>p.red</code> </td><td class="fragment">paragraf z klasą <code>red</code>
+					</td>
+					</tr>
+					<tr>
+					<td><code>p:not(.red)</code> </td><td class="fragment">paragraf, który nie ma klasy <code>red</code>
+					</td>
+					</tr>
+						<tr>
+					<td><code>[disabled]</code> </td><td class="fragment">element który ma atrybut <code>disabled</code>
+					</td>
+					</tr>
+										<tr>
+					<td><code>input[type=text]</code> </td><td class="fragment">element input który ma atrybut type równy <code>text</code>
+					</td>
+					</tr>
+										</tr>
+										<tr>
+					<td><code>[class^=example]</code> </td><td class="fragment">klasa zaczyna się od frazy <code>example</code>
+					</td>
+					</tr>
+					<tr>
+					<td><code>[class$=example]</code> </td><td class="fragment">klasa kończy się frazą <code>example</code>
+					</td>
+					</tr>
+										<tr>
+					<td><code>[class*=example]</code> </td><td class="fragment">klasa zawiera <code>example</code>
+					</td>
+					</tr>
+					</table>
+					</section>
+						<section>
+					<a href="http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048">Selectors explained</a>
+					</section>
+					<section>
+					<h2>Exercise (10 min)</h2>
+					</section>
+					<section>
+						<h2>manipulacja DOM-em</h2>
+						<table>
+						<tr><td><code>element.html()</code></td><td class="fragment">pobierz zawartość elementu</td></tr>
+						<tr><td><code>html('test')</code><td class="fragment">ustaw html elementowi</td></td>
+						</tr>
+						<tr><td><code>addClass('test')</code><br/><code>removeClass('test')</code><td class="fragment">dodaj/usuń klasę <code>test</code></td></td>
+						</tr>
+						<tr><td><code>hasClass('test')</code><td class="fragment">czy element ma klasę <code>test</code></td></td>
+						</tr>
+						<tr><td><code>after(content)</code><br/><code>before(content)</code></td><td class="fragment">wstaw <code>content</code> za/przed wybranym elementem</td></tr>
+
+						<tr><td><code>append(content)</code><br/><code>prepend(content)</code></td><td class="fragment">wstaw <code>content</code> wewnątrz wybranego na końcu/początku</td></tr>
+
+							<tr><td><code>attr('title')</code></td><td class="fragment">pobierz atrybut <code>title</code></td></tr>
+								<tr><td><code>attr('title','test')</code></td><td class="fragment">ustaw atrybutowi <code>title</code> wartość <code>test</code></td></tr>
+						<tr><td><code>css('color')</code></td><td class="fragment">pobierz kolor elem.</td></tr>
+							<tr><td><code>css('color','red')</code></td><td class="fragment">ustaw kolor</td></tr>
+								<tr><td><code>remove()</code></td><td class="fragment">usuń element</td></tr>
+								</tr>
+								<tr><td><code>empty()</code></td><td class="fragment">odepnij dzieci elementu</td></tr>
+								<tr class="fragment"><td>...</td><td class="fragment">much more</td></tr>
+						</table>
+					</section>
+					<section>
+						<p>manipulacja DOM-em extra</p>
+
+							<dl>
+								<dt><pre><code>$("p:contains('lorem')")</code></pre></dt>
+								<dd class="fragment">
+						pobierz paragrafy zawierające tekst <code>lorem</code>
+					</dd>
+				<dt>
+						<pre><code>$("p:not(:contains('lorem'))")</code></pre><dd class="fragment">pobierz paragrafy niezawierające tekstu <code>lorem</code></dd>
+
+						<dt><pre><code>$('#foo').append($('&lt;div/&gt;').text('bar'))</code></pre></dt><dd class="fragment">w rodzicu elementu o id <code>foo</code> umieść div z tekstem <code>bar</code></dd>
+				</dl>
+			</section>
+</section>
+
+
+				<section>
+
+					<section>
+						<h1>zdarzenia</h1>
+					</section>
+					<section>
+		<h3>hello world</h3>
+<div>
+					<p class="fragment">podpięcie listenera</p>
+	<pre class="fragment"><code data-trim contenteditable>
+$('button').click(function() {
+	alert('validating form...');
+});
+					</code></pre>
+
+					<p class="fragment">programatyczne wywołanie zdarzenia</p>
+	<pre class="fragment"><code data-trim contenteditable>
+$('button').click();
+					</code></pre>
+					</div>
+					</section>
+
+					<section>
+					<h3>zdarzenia DOM</h3>
+					<style>
+					.show_span_on_hover span {
+			display: none;
+			position: absolute;
+			top: -10px;
+		-webkit-transition: top 0.5s;
+					}
+						.show_span_on_hover:hover strong {
+						display: none;
+					}
+					.show_span_on_hover:hover span {
+						display: block;
+						position: absolute;
+						top: -217px;
+
+					}
+					</style>
+					<table>
+					<tr><td><code>click</code></td><td class="fragment">element jest "kliknięty" myszą</td></tr>
+					<tr><td><code>change</code></td><td class="fragment">wartość pola się zmienia*</td></tr>
+					<tr><td><code>focus</code></td><td class="fragment">element wchodzi w stan <code>focus</code></td></tr>
+					<tr><td><code>blur</code></td><td class="fragment">element wychodzi ze stanu <code>focus</code></td></tr>
+					<tr><td><code>keypress</code></td><td class="fragment">naciśnięcie klawisza w <em>sfokusowanym</em> polu</td></tr>
+					<tr><td><code>load</code></td><td class="fragment">element jest załadowany</td></tr>
+					<tr><td><code>ready</code></td><td class="fragment">element jest wyrenderowany</td></tr>
+					<tr><td><code>mouse<a href="#" class="show_span_on_hover"><strong>*</strong><span>move enter leave over out up enter</span></a></code></td><td class="fragment">eventy wywoływane przez ruch kursora</td></tr>
+
+					</table>
+					</section>
+					<section>
+						<h2>hello world 2</h2>
+						<p class="fragment">podpięcie listenera</p>
+		<pre class="fragment"><code data-trim contenteditable>
+	$('button').on('click focus', function() {
+		alert('validating form...');
+	});
+</code></pre>
+
+						<p class="fragment">programatyczne wywołanie zdarzenia</p>
+		<pre class="fragment"><code data-trim contenteditable>
+	$('button').trigger('click');
+						</code></pre>
+
+
+					</section>
+					<section>
+						<h2>exercise (10 min)</h2>
+						<p><a href="http://jsfiddle.net/zdanowiczkonrad/nC8cx/">http://jsfiddle.net/zdanowiczkonrad/nC8cx/</a></p>
+						<p>zaimplementuj przy pomocy jQuery dodawanie, usuwanie i filtrowanie todosów</p>
+				</section>
+				<section>
+					<h2>exercise (5 min)</h2>
+					<p><a href="http://jsfiddle.net/zdanowiczkonrad/rcm93/">http://jsfiddle.net/zdanowiczkonrad/rcm93/</a></p>
+					<p>za pomocą jQuery z poziomu JS-a (programatycznie):</p>
+					<ol>
+						<li>usuń todosa zawierającego słowo "JavaScript"</li>
+						<li>dodaj todosa o treści "Learn jQuery"</li>
+						<li>przefiltruj todosy tak, aby widoczny był tylko "Learn jQuery"</li>
+					</ol>
+					<p>
+				</section>
+				</section>
+				<section>
+					<section>
+					<h2>ajax</h2>
+				</section>
+				<section>
+					<p>example</p>
+					<pre><code>$.get( "ajax/test.html", function( data ) {
+  $( ".result" ).html( data );
+  alert( "Load was performed." );
+});</code></pre>
+				</section>
+				<section>
+					<h2>animacje</h2>
+					<table>
+					<tr><td><code>fadeIn() <br/> fadeOut()</code></td><td class="fragment">pokaż/wygaś element</td></tr>
+
+						<tr><td><code>slideUp() <br/> slideDown()</code><td class="fragment">rozwiń/zwiń</td></td>
+					</tr>
+					<tr><td><code>animate({height: "+=100", color: "red"})</code><td class="fragment">konfigurowalna animacja</td></td>
+				</tr>
+			</table>
+				</section>
+				<section>
+					<h2>oficjalne pluginy</h2>
+					<table>
+						<tr><td><code>JQuery UI</code><td class="fragment">kolekcja komponentów GUI, łatwa w obsłudze</td></td>
+					</tr>
+					<tr><td><code>JQuery Mobile</code><td class="fragment">framework do szybkiego pisania aplikacji mobilnych w HTML-u</td></td>
+				</tr>
+
+					</table>
+				</section>
+				<section>
+					<h2>repozytorium pluginów</h2>
+					<a href="https://plugins.jquery.com">https://plugins.jquery.com</a>
+					<p><strong>&gt; 2000 pluginów</strong></p>
+					<ul class="fragment">
+						<li>walidacja</li>
+						<li>customowe i zaawansowane komponenty</li>
+						<li>animacje</li>
+						<li>galerie zdjęć</li>
+						<li>bajery</li>
+						<li>wszystko</li>
+					</ul>
+				</section>
+	
+				</section>	
+				<section>
+					<section><h2>JavaScript vs jQuery</h2></section>
+					<section><h3>jQuery jest ok, gdy</h3>
+					<ul>
+					<li>nie robimy operacji na wielkiej liczbie elementów</li>
+					<li>nie robimy dużej aplikacji</li>
+					<li>nie implementujemy w jQuery tłustej logiki biznesowej/prezentacyjnej</li>
+					</ul>
+					
+					</section>
+					<section>
+					<h3>jQuery -> JavaScript</h3>
+					<p>wszystko napisane w jQuery da się zastąpić JavaScriptem</p>
+					<ul>
+					<li><a href="http://youmightnotneedjquery.com/">you might not need jquery</a> - jak zastąpić jQuery VanilląJS</li>
+					<li><a href="http://vanilla-js.com/">vanilla-js.com</a> - krótkie porównanie performance'u i przykłady kodu</li>
+					</ul>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
